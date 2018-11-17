@@ -1,6 +1,5 @@
 package com.me.simplecalculator.model;
 
-import com.me.simplecalculator.Utils.MathCalculator;
 
 import org.junit.Before;
 import org.junit.Test;

@@ -15,6 +15,7 @@ public class CalculatorPresenter implements CalculatorPresenterContract {
 
     public CalculatorPresenter(CalculatorViewContract view) {
         this.view = view;
+        this.model = new Calculator();
     }
 
     @Override
