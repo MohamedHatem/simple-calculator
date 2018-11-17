@@ -7,13 +7,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.me.simplecalculator.R;
-import com.me.simplecalculator.model.Calculator;
 import com.me.simplecalculator.presenter.CalculatorPresenter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class CalculatorActivity extends AppCompatActivity implements CalculatorView {
+public class CalculatorActivity extends AppCompatActivity implements CalculatorViewContract {
 
 
     @BindView(R.id.result_tv)

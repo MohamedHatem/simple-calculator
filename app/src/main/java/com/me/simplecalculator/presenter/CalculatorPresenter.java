@@ -1,22 +1,19 @@
 package com.me.simplecalculator.presenter;
 
-import android.view.View;
-import android.widget.Button;
-
 import com.me.simplecalculator.model.Calculator;
-import com.me.simplecalculator.view.CalculatorView;
+import com.me.simplecalculator.view.CalculatorViewContract;
 
 /**
  * Created by xvbp3947 on 17/11/18.
  */
 
-public class CalculatorPresenter implements CalPresenter {
+public class CalculatorPresenter implements CalculatorPresenterContract {
 
-    CalculatorView view;
+    CalculatorViewContract view;
     Calculator model;
 
 
-    public CalculatorPresenter(CalculatorView view) {
+    public CalculatorPresenter(CalculatorViewContract view) {
         this.view = view;
     }
 
