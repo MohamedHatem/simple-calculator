@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:columnCount="4"
     android:rowCount="6"
-    tools:context="com.me.simplecalculator.Controller.CalculatorActivity">
+    tools:context="com.me.simplecalculator.view.CalculatorActivity">
 
     <TextView
         android:id="@+id/result_tv"

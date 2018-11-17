@@ -1,4 +1,4 @@
-package com.me.simplecalculator.Controller;
+package com.me.simplecalculator.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,11 +8,12 @@ import android.widget.TextView;
 
 import com.me.simplecalculator.R;
 import com.me.simplecalculator.model.Calculator;
+import com.me.simplecalculator.presenter.CalculatorPresenter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class CalculatorActivity extends AppCompatActivity {
+public class CalculatorActivity extends AppCompatActivity implements CalculatorView {
 
 
     @BindView(R.id.result_tv)
@@ -21,8 +22,7 @@ public class CalculatorActivity extends AppCompatActivity {
     @BindView(R.id.exp_info_tv)
     TextView mExpInfoTv;
 
-    private Calculator model;
-
+    CalculatorPresenter calculatorPresenter = new CalculatorPresenter(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,39 +30,22 @@ public class CalculatorActivity extends AppCompatActivity {
         setContentView(R.layout.calculator_layout);
         ButterKnife.bind(this);
 
-        model = new Calculator();
+        calculatorPresenter.onCreate();
     }
 
     public void onCellClicked(View v) {
         Button button = (Button) v;
         String tag = button.getTag().toString();
-        boolean isOp = tag.equalsIgnoreCase("+") || tag.equalsIgnoreCase("-") ||
-                tag.equalsIgnoreCase("*") || tag
-                .equalsIgnoreCase("/");
-
-        boolean isEqual = tag.equalsIgnoreCase("=");
-        boolean isClear = tag.equalsIgnoreCase("c");
-
-        if (isEqual) {
-            model.calcTheResult();
-        } else if (isOp) {
-            model.enterTheOperation(tag);
-        } else if (isClear) {
-            model.clear();
-        } else {
-            model.enterNewDigit(tag);
-        }
-
-
-        showExperssion(model.getMathExperssionInfo());
-        showResult(model.getResult());
+        calculatorPresenter.onButtonClicked(tag);
     }
 
 
+    @Override
     public void showExperssion(String exp) {
         mExpInfoTv.setText(exp);
     }
 
+    @Override
     public void showResult(String result) {
         mResultTv.setText(result);
     }
