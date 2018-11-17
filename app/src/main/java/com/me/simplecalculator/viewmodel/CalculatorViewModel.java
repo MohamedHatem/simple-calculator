@@ -1,20 +1,22 @@
-package com.me.simplecalculator.presenter;
+package com.me.simplecalculator.viewmodel;
+
+import android.databinding.ObservableField;
 
 import com.me.simplecalculator.model.Calculator;
-import com.me.simplecalculator.view.CalculatorViewContract;
 
 /**
  * Created by xvbp3947 on 17/11/18.
  */
 
-public class CalculatorPresenter implements CalculatorPresenterContract {
+public class CalculatorViewModel implements CalculatorViewModelContract {
 
-    CalculatorViewContract view;
+    public final ObservableField<String> result = new ObservableField<>();
+    public final ObservableField<String> mathExpInfo = new ObservableField<>();
+
     Calculator model;
 
 
-    public CalculatorPresenter(CalculatorViewContract view) {
-        this.view = view;
+    public CalculatorViewModel() {
         this.model = new Calculator();
     }
 
@@ -41,8 +43,7 @@ public class CalculatorPresenter implements CalculatorPresenterContract {
             model.enterNewDigit(tag);
         }
 
-
-        view.showExperssion(model.getMathExperssionInfo());
-        view.showResult(model.getResult());
+        result.set(model.getResult());
+        mathExpInfo.set(model.getMathExperssionInfo());
     }
 }

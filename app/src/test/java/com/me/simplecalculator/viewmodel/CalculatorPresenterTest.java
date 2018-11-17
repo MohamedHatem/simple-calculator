@@ -1,7 +1,6 @@
-package com.me.simplecalculator.presenter;
+package com.me.simplecalculator.viewmodel;
 
 import com.me.simplecalculator.model.Calculator;
-import com.me.simplecalculator.view.CalculatorViewContract;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -21,7 +20,7 @@ import static org.mockito.ArgumentMatchers.any;
 @RunWith(MockitoJUnitRunner.class)
 public class CalculatorPresenterTest {
 
-    private CalculatorPresenter calPresenter;
+    private CalculatorViewModel calPresenter;
 
     @Mock
     private Calculator model;
@@ -32,7 +31,7 @@ public class CalculatorPresenterTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        calPresenter = Mockito.spy(new CalculatorPresenter(viewContract));
+        calPresenter = Mockito.spy(new CalculatorViewModel(viewContract));
     }
 
     @Test
