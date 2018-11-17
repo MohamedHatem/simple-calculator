@@ -53,9 +53,18 @@ public class CalculatorActivity extends AppCompatActivity {
             model.enterNewDigit(tag);
         }
 
-        mExpInfoTv.setText(model.getMathExperssionInfo());
-        mResultTv.setText(model.getResult());
+
+        showExperssion(model.getMathExperssionInfo());
+        showResult(model.getResult());
     }
 
+
+    public void showExperssion(String exp) {
+        mExpInfoTv.setText(exp);
+    }
+
+    public void showResult(String result) {
+        mResultTv.setText(result);
+    }
 
 }
